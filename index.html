@@ -30,7 +30,22 @@
 		zoomOffset: -1
 	}).addTo(mymap);
 
+	var ambulanceIcon = L.icon({
+    iconUrl: 'https://www.stickpng.com/assets/images/5afac8866554160a79bea11f.png',
+
+    iconSize:     [32, 32], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+L.marker([-34.574503, -58.435714], {icon: ambulanceIcon}).addTo(map);
+
+
 </script>
+
+
 
 
 
