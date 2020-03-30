@@ -1,1 +1,1 @@
-getLoginModal();
+getNavbar();
