@@ -8,12 +8,75 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="">
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 
-
+<!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	
 </head>
-<body>
+<body id="body">
 
+<nav class="navbar navbar-default" id="_Menu">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                Emersis
+            </a>
+        </div>
 
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                            Auditoria
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="~/Auditoria/Log"><span><i class="fa fa-book"></i> Logs</span></a>
+                            </li>
+
+                        </ul>
+                    </li>
+                
+                <li class="dropdown">
+                    <a href="~/Admin">
+                        Administrador general
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+               <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                            Usuario
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="html/Login"><span><i class="fa fa-book"></i> Iniciar Sesion</span></a>
+                            </li>
+
+                        </ul>
+                    </li>
+                </li>
+                <li><a href="~/Autenticacion/LogOut"><i class="fa fa-sign-out" aria-hidden="true"></i> Salir</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+
+</nav>
 
 <div id="mapid" style="width: 100%; height: 100%; position: relative;" class="leaflet-container leaflet-fade-anim leaflet-grab leaflet-touch-drag" tabindex="0"></div>
 <script>
@@ -67,11 +130,14 @@ L.marker([-34.574503, -58.435714], {icon: ambulanceIcon}).addTo(mymap);
 L.marker([-34.574775, -58.435857], {icon: hummerIcon}).addTo(mymap);
 
 
-
+// Cargar Menu
+//document.getElementById("_Menu").innerHTML='<object type="text/html" data="./html/_Menu.html" ></object>';
 
 </script>
 
 
 
 
-</body></html>
+</body>
+
+</html>
