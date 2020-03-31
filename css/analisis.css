@@ -1,0 +1,19 @@
+body {
+  width: 100%;
+  height: 100%;
+  display: grid;
+}
+.analisis-header {
+  width: 100%;
+  height: 10vh;
+}
+.analisis-data-container {
+  width: 100%;
+  height: 90vh;
+}
+.analisis-mapa {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin-top: -20px;
+}

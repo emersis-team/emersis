@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Análisis</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""
+    ></script>
+    <script src="https://unpkg.com/leaflet-kmz@latest/dist/leaflet-kmz.js"></script>
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/analisis.css?v=0" />
+  </head>
+  <body>
+    <div class="analisis-header">
+      <div class="dropdown" style="display: inline-block;">
+        <button
+          id="analisis-dropdown-entidades-btn"
+          class="btn dropdown-toggle"
+          type="button"
+          data-toggle="dropdown"
+        >
+          Entidades<span class="caret"></span>
+        </button>
+        <ul id="analisis-dropdown-entidades" class="dropdown-menu">
+          <input
+            id="analisis-buscador-entidades"
+            class="form-control"
+            type="text"
+            placeholder="Search.."
+            onkeyup="buscarEntidades()"
+          />
+        </ul>
+      </div>
+      <div class="dropdown" style="display: inline-block;">
+        <button
+          id="analisis-dropdown-capacidades-btn"
+          class="btn dropdown-toggle"
+          type="button"
+          data-toggle="dropdown"
+        >
+          Capacidades<span class="caret"></span>
+        </button>
+        <ul id="analisis-dropdown-capacidades" class="dropdown-menu">
+          <input
+            id="analisis-buscador-capacidades"
+            class="form-control"
+            type="text"
+            placeholder="Search.."
+            onkeyup="buscarCapacidades()"
+          />
+        </ul>
+      </div>
+      <div class="dropdown" style="display: inline-block;">
+        <button
+          id="analisis-dropdown-necesidades-btn"
+          class="btn dropdown-toggle"
+          type="button"
+          data-toggle="dropdown"
+        >
+          Necesidades<span class="caret"></span>
+        </button>
+        <ul id="analisis-dropdown-necesidades" class="dropdown-menu">
+          <input
+            id="analisis-buscador-necesidades"
+            class="form-control"
+            type="text"
+            placeholder="Search.."
+            onkeyup="buscarNecesidades()"
+          />
+        </ul>
+      </div>
+      <div class="dropdown" style="display: inline-block;">
+        <button
+          id="analisis-dropdown-responsables-btn"
+          class="btn dropdown-toggle"
+          type="button"
+          data-toggle="dropdown"
+        >
+          Responsables<span class="caret"></span>
+        </button>
+        <ul id="analisis-dropdown-responsables" class="dropdown-menu">
+          <input
+            id="analisis-buscador-responsables"
+            class="form-control"
+            type="text"
+            placeholder="Search.."
+            onkeyup="buscarResponsables()"
+          />
+        </ul>
+      </div>
+    </div>
+    <div class="analisis-data-container">
+      <div
+        id="mapid"
+        class="analisis-mapa leaflet-container leaflet-fade-anim leaflet-grab leaflet-touch-drag"
+        tabindex="0"
+      ></div>
+    </div>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/emersis.js"></script>
+    <script src="../js/mapa.js"></script>
+    <script src="../js/analisis.js"></script>
+  </body>
+</html>
