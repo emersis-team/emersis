@@ -7,9 +7,33 @@ body {
   width: 100%;
   height: 10vh;
 }
+.table > thead > tr > th {
+  background-color: #ffffff;
+}
 .analisis-data-container {
+  overflow-y: auto;
+  margin-top: 7.6vh;
+  position: absolute;
   width: 100%;
+  bottom: 0;
   height: 90vh;
+}
+.analisis-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.analisis-table-header > tr {
+  height: 4vh;
+  margin-left: 1vw;
+  margin-bottom: 1vw;
+}
+.analisis-table-header > tr > th {
+  margin-left: 1vw;
+  margin-right: 1vw;
+  position: sticky;
+  top: -1px;
+  z-index: 500;
+  user-select: none;
 }
 .analisis-mapa {
   width: 100%;
