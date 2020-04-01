@@ -1,24 +1,19 @@
-<!-- Fragmento -->
-<div id="fragmento">
-	<div>
-		<h3>FRAGMENTO 1</h3>
-	</div>
-	<div>
-		<h3>FRAGMENTO 2</h3>
-	</div>
-	<div>
-		<h3>FRAGMENTO 3</h3>
-	</div>
-	<div>
-		<h3>FRAGMENTO 4</h3>
-	</div>
-	<div>
-		<h3>FRAGMENTO 5</h3>
-	</div>
-	<div>
-		<h3>FRAGMENTO 6</h3>
-	</div>
-	<div>
-		<h3>FRAGMENTO 7</h3>
-	</div>
+
+<!-- Modal Window Container -->
+<div id="fragmento" class="my-modal-base">
+	<h2>Cuerpo de fragmento con un boton...</h2>
+	<!-- Trigger the modal with a button -->
+	<button type="button" class="btn btn-info btn-lg" id="myBtn">Open
+		Modal</button>
+	<div id="modalhere"></div>
 </div>
+
+<script>
+	$(document).ready(function() {
+		$("#myBtn").click(function() {
+			$('#modalhere').load('modal.html', function() {
+				$('#myModal').modal();
+			});
+		});
+	});
+</script>
