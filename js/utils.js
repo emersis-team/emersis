@@ -9,3 +9,16 @@ function ordenarJsonArray(jsonArray, prop, asc) {
   });
   return result;
 }
+function ordenarJson2doOrden(json, prop1, prop2, asc) {
+  var result = json.sort(function(a, b) {
+    var aProp =
+      a[prop1] != null && a[prop1][prop2] != null ? a[prop1][prop2] : "-";
+    var bProp =
+      b[prop1] != null && b[prop1][prop2] != null ? b[prop1][prop2] : "-";
+    if (asc) {
+      return aProp.localeCompare(bProp, "en", { numeric: true });
+    }
+    return bProp.localeCompare(aProp, "en", { numeric: true });
+  });
+  return result;
+}
