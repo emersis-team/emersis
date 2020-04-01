@@ -3,6 +3,8 @@
 <nav class="navbar navbar-default" id="barramenu">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
+
+		<a class="navbar-brand" href="/"><img style="height: 100%;" src="./images/icon_emersis.png" /></a>
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
@@ -20,11 +22,10 @@
 			<ul class="nav navbar-nav">
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"> <i class="fa fa-book"
-						aria-hidden="true"></i> Emergencias <span class="caret"></span>
+					data-toggle="dropdown"> Emergencias <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="#"><span><i class="fa fa-book"></i>COVID-19</span></a>
+						<li><a href="#"><span>COVID-19</span></a>
 						</li>
 
 					</ul></li>
@@ -57,3 +58,34 @@
 		});
 	});
 </script>
+
+
+<style>
+
+/* change the background color */
+.navbar-default {
+    background-color: #666666;
+}
+/* change the brand and text color */
+.navbar-default .navbar-brand,
+.navbar-default .navbar-text {
+    color: #ffffff;
+}
+
+/* change the link color */
+.navbar-default .navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+/* change the color of active or hovered links */
+.navbar-default .nav-item.active .nav-link,
+.navbar-default .nav-item:focus .nav-link,
+.navbar-default .nav-item:hover .nav-link {
+    color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #ffffff;
+}
+
+</style>
