@@ -24,7 +24,7 @@ var entidades = [
     datosContacto: {
       responsable: {
         id: 0,
-        nombre: "Persona 1"
+        nombre: "coronel"
       },
       telefono: "4444444",
       dirección: "direccion1"
@@ -49,7 +49,7 @@ var entidades = [
     datosContacto: {
       responsable: {
         id: 1,
-        nombre: "Persona 2"
+        nombre: "comisario"
       },
       telefono: "4444444",
       dirección: "direccion 2"
@@ -74,7 +74,7 @@ var entidades = [
     datosContacto: {
       responsable: {
         id: 2,
-        nombre: "Persona 3"
+        nombre: "doctor"
       },
       telefono: "4444444",
       dirección: "direccion 3"
@@ -95,7 +95,7 @@ var emergencias = [
 	{
 		id: 0,
 		nombre: "Coronavirus COVID-19",
-		usuarioCoordinador: "Coordinador",
+		usuarioCoordinador: "virus19",
 		fechaInicio: new Date("2020/03/20"),
 		fechaFin: null,
 		calcos: ["Contagios Coronavirus 1.v1.kmz", "Contagios Coronavirus 2.v1.kmz", "Contagios Coronavirus 3.v1.kmz"],
@@ -113,7 +113,7 @@ var emergencias = [
 	{
 		id: 1,
 		nombre: "Terremoto en San Juan",
-		usuarioCoordinador: "Coordinador",
+		usuarioCoordinador: "terremoto08",
 		fechaInicio: new Date("2008/04/18"),
 		fechaFin: new Date("2008/05/02"),
 		calcos: ["Terremoto San Juan - Zona Afectada.v1.kmz", "Terremoto San Juan.v1.kmz"],
