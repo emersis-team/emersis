@@ -5,18 +5,18 @@ body {
 }
 .analisis-header {
   width: 100%;
-  height: 10vh;
+  height: auto;
 }
 .table > thead > tr > th {
   background-color: #ffffff;
+  width: 20%;
 }
 .analisis-data-container {
   overflow-y: auto;
-  margin-top: 7.6vh;
-  position: absolute;
+  margin-top: 1vh;
   width: 100%;
   bottom: 0;
-  height: 90vh;
+  height: auto;
 }
 .analisis-table {
   border-collapse: collapse;
@@ -35,9 +35,8 @@ body {
   z-index: 500;
   user-select: none;
 }
-.analisis-mapa {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  margin-top: -20px;
+.analisis-table-footer {
+  display: table-footer-group;
+  vertical-align: middle;
+  border-color: inherit;
 }

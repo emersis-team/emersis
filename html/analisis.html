@@ -94,6 +94,7 @@
         </ul>
       </div>
     </div>
+    <p>Capacidades</p>
     <div class="analisis-data-container">
       <table class="analisis-table table">
         <thead class="analisis-table-header">
@@ -102,13 +103,37 @@
             <th scope="col">Responsable</th>
             <th scope="col">Tipo</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Cantidad</th>
+            <th scope="col">
+              Cantidad <span id="analisis-total-capacidad"></span>
+            </th>
           </tr>
         </thead>
-        <tbody class="analisis-table-body"></tbody>
+        <tbody
+          id="analisis-table-capacidades"
+          class="analisis-table-body"
+        ></tbody>
       </table>
     </div>
-
+    <p>Necesidades</p>
+    <div class="analisis-data-container">
+      <table class="analisis-table table">
+        <thead class="analisis-table-header">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Responsable</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">
+              Cantidad <span id="analisis-total-necesidad"></span>
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          id="analisis-table-necesidades"
+          class="analisis-table-body"
+        ></tbody>
+      </table>
+    </div>
     <script src="../js/utils.js"></script>
     <script src="../js/analisis.js"></script>
   </body>

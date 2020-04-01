@@ -79,7 +79,7 @@ var necesidades = [];
 
 var entidadFiltro = null;
 var necesidadFiltro = null;
-var capadidadFiltro = null;
+var capacidadFiltro = null;
 var responsableFiltro = null;
 
 agregarEntidadesATabla(entidades);
@@ -88,21 +88,20 @@ agregarEntidadesADropdown(entidades);
 function agregarEntidadesATabla(array) {
   $(".analisis-table-body").empty();
   var index = 0;
+  var cantidadCapacidadTotal = 0;
+  var cantidadNecesidadTotal = 0;
   array.forEach(function(e) {
     if (
       (entidadFiltro == null ||
         (entidadFiltro != null && e.id == entidadFiltro.id)) &&
-      (capadidadFiltro == null ||
-        e.capacidades.some(c => c.id == capadidadFiltro.id)) &&
-      (necesidadFiltro == null ||
-        e.necesidades.some(c => c.id == necesidadFiltro.id)) &&
       (responsableFiltro == null ||
         (responsableFiltro != null &&
           e.datos.responsable.id == responsableFiltro.id))
     ) {
       e.capacidades.forEach(function(c) {
         index++;
-        if (capadidadFiltro == null || c.id == capadidadFiltro.id) {
+        if (capacidadFiltro == null || c.id == capacidadFiltro.id) {
+          cantidadCapacidadTotal = cantidadCapacidadTotal + c.cantidad;
           var item =
             (index % 2 == 0
               ? "<tr style='background-color: #F8F8F8;'>"
@@ -121,12 +120,13 @@ function agregarEntidadesATabla(array) {
             c.cantidad +
             "</td>" +
             "</tr>";
-          $(".analisis-table-body").append(item);
+          $("#analisis-table-capacidades").append(item);
         }
       });
       e.necesidades.forEach(function(c) {
         index++;
         if (necesidadFiltro == null || c.id == necesidadFiltro.id) {
+          cantidadNecesidadTotal = cantidadNecesidadTotal + c.cantidad;
           var item =
             (index % 2 == 0
               ? "<tr style='background-color: #F8F8F8;'>"
@@ -145,11 +145,17 @@ function agregarEntidadesATabla(array) {
             c.cantidad +
             "</td>" +
             "</tr>";
-          $(".analisis-table-body").append(item);
+          $("#analisis-table-necesidades").append(item);
         }
       });
     }
   });
+  $("#analisis-total-capacidad").text(
+    "(total: " + cantidadCapacidadTotal + ")"
+  );
+  $("#analisis-total-necesidad").text(
+    "(total: " + cantidadNecesidadTotal + ")"
+  );
 }
 function agregarEntidadesADropdown(array) {
   responsables = [];
@@ -244,7 +250,7 @@ function buscarEntidades() {
   agregarEntidadesADropdown(entidadesFiltradas);
 }
 function buscarCapacidades() {
-  capadidadFiltro = null;
+  capacidadFiltro = null;
   var value = $("#analisis-buscador-capacidades")
     .val()
     .toLowerCase();
@@ -285,9 +291,12 @@ function elegirEntidad(id) {
 }
 function elegirCapacidad(id) {
   var capacidad = capacidades.filter(c => c.id == id)[0];
-  capadidadFiltro = capacidad;
-  var entidadesFiltradas = entidades.filter(e =>
-    e.capacidades.some(c => c.id == id)
+  capacidadFiltro = capacidad;
+  var entidadesFiltradas = entidades.filter(
+    e =>
+      e.capacidades.some(c => c.id == id) ||
+      necesidadFiltro == null ||
+      e.necesidades.some(n => n.id == necesidadFiltro.id)
   );
   $("#analisis-dropdown-capacidades-btn").text(capacidad.nombre);
   document.getElementById("analisis-dropdown-capacidades-btn").innerHTML +=
@@ -297,8 +306,11 @@ function elegirCapacidad(id) {
 function elegirNecesidad(id) {
   var necesidad = necesidades.filter(n => n.id == id)[0];
   necesidadFiltro = necesidad;
-  var entidadesFiltradas = entidades.filter(e =>
-    e.necesidades.some(n => n.id == id)
+  var entidadesFiltradas = entidades.filter(
+    e =>
+      e.necesidades.some(n => n.id == id) ||
+      capacidadFiltro == null ||
+      e.capacidades.some(c => c.id == capacidadFiltro.id)
   );
   $("#analisis-dropdown-necesidades-btn").text(necesidad.nombre);
   document.getElementById("analisis-dropdown-necesidades-btn").innerHTML +=
@@ -328,7 +340,7 @@ function resetEntidadesDropdown() {
 }
 function resetCapacidades() {
   $(".analisis-dropdown-capacidades-li").remove();
-  capadidadFiltro = null;
+  capacidadFiltro = null;
   agregarEntidadesATabla(entidades);
   agregarCapacidadesADropdown(capacidades);
   $("#analisis-dropdown-capacidades-btn").text("Todos");
