@@ -30,7 +30,12 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown"><a href="#"> Alertas </a></li>
+                <li class="dropdown">
+                	<a href="#" data-toggle="modal" id="alertas"> Alertas </a>
+                </li>
+                <li class="dropdown">
+                	<a href="#" data-toggle="modal" id="situacion"> Recursos </a>
+                </li>
                 <li class="dropdown">
                     <a href="#" data-toggle="modal" id="analisis"> Análisis </a>
                 </li>
@@ -58,6 +63,22 @@
 
 <script>
     $(document).ready(function () {
+    	
+    	$("#alertas").click(function () {
+
+            $("#modalhere").empty();
+            $("#modalhere").load("./html/alertas.html", function () {
+                $("#alertasModal").modal();
+            });
+        });
+    	
+    	$("#situacion").click(function () {
+
+            $("#modalhere").empty();
+            $("#modalhere").load("./html/situacion.html", function () {
+                $("#situacionModal").modal();
+            });
+        });
 
         $("#analisis").click(function () {
 
