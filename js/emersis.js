@@ -1,5 +1,5 @@
 var kmzParser = new L.KMZParser({
-    onKMZLoaded: function(layer, name) {
+    onKMZLoaded: function (layer, name) {
         control.addOverlay(layer, name);
         layer.addTo(mymap);
     }
@@ -24,9 +24,16 @@ var hummerIcon = L.icon({
 });
 
 
-function agregarEntidad(x, y) {
+function agregarEntidad(x, y, tipo) {
+
+    // Fix Temporal hasta mejorar los tipos
+    var currentIcon = null;
+    if (tipo == "Sanidad")
+        currentIcon = ambulanceIcon;
+    if (tipo == "Seguridad")
+        currentIcon = hummerIcon;
     L.marker([x, y], {
-        icon: ambulanceIcon
+        icon: currentIcon
     }).addTo(mymap);
 }
 
@@ -42,7 +49,30 @@ function agregarAlcance(x, y, color, transparencia, radio) {
         radius: radio
     }).addTo(mymap);
 }
-    function setCookie(name,value,days) {
+
+function refrescarEmergencia(emergencia) {
+    var emergenciaActual = obtenerEmergencia(emergencia);
+    emergenciaActual.entidades.forEach(function (entry) {
+        agregarEntidad(entry.posicion.latitud, entry.posicion.longitud, entry.tipo);
+    });
+
+    emergenciaActual.calcos.forEach(function (entry) {
+        agregarCalco("./examples/" + entry);
+    });
+
+}
+
+function obtenerEmergencia(id) {
+    var current = null;
+    emergencias.forEach(function (entry) {
+        if (entry.id == id)
+            current = entry;
+    });
+
+    return current;
+};
+
+function setCookie(name,value,days) {
     var expires = "";
     if (days) {
         var date = new Date();
