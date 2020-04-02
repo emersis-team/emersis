@@ -77,4 +77,14 @@ function agregarAlcance(x, y, color, transparencia, radio) {
                     document.getElementById("btnLogin").classList.add("hidden");
                 }
         });
+
+
+        $.each(emergencias, function(num) {
+            var link = document.createElement("a");
+            link.innerHTML = emergencias[num].nombre;
+            link.setAttribute('onclick','refrescarEmergencia('+ emergencias[num].id + ')');
+            document.getElementById("emergenciasLista").appendChild(link); 
+
+        });
+
     });
