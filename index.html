@@ -9,6 +9,11 @@
           crossorigin=""/>
     <link rel="stylesheet" href="./css/analisis.css?v=0"/>
 
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-kmz@latest/dist/leaflet-kmz.js"></script>
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
     <script
@@ -43,16 +48,23 @@
         $("#barra").append(barraMenu);
         $("#mapa").append(mapa);
 
+        dynamicallyLoadScript("./js/datos.js");
+        dynamicallyLoadScript("./js/emersis.js");
+        dynamicallyLoadScript("./js/mapa.js");
+
+    }
+
+    function dynamicallyLoadScript(url) {
+
+        var script = document.createElement("script");
+        script.src = url;
+
+        document.head.appendChild(script);
     }
 
     fetchPages();
 
 </script>
-
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-        crossorigin=""></script>
-<script src="https://unpkg.com/leaflet-kmz@latest/dist/leaflet-kmz.js"></script>
 
 </body>
 
