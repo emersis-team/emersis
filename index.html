@@ -15,17 +15,26 @@
 </head>
 
 <body id="body">
+    
     <div id="barra"></div>
-    <div id="mapid" style="width: 100%; height: 91%; position: relative; margin-top: -20px;" class="leaflet-container leaflet-fade-anim leaflet-grab leaflet-touch-drag" tabindex="0"></div>
-	<div id="error"></div>
+    <div id="mapa"></div>
+    <div id="error"></div>
 
 	<!-- 	Carga la Barra -->
 	<script>
-		$("#barra").load("./html/barramenu.html", function(response, status, xhr) {
-			if (status == "error") {
-				$("#error").html("Error loading BarraMenu!");
-			}
-		});
+            
+        async function fetchPages() {
+
+            const barraMenu = await (await fetch('./html/barramenu.html')).text();
+            const mapa = await (await fetch('./html/mapa.html')).text();
+            
+            $("#barra").append(barraMenu);
+            $("#mapa").append(mapa);
+            
+        }
+        
+        fetchPages();
+        
 	</script>
 	<!-- 	Cargar Mapa -->
     <script src="./js/datos.js"></script>
