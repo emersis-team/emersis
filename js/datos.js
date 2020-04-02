@@ -81,7 +81,7 @@ var entidades = [ {
 	} ]
 }, {
 	id : 1,
-	nombre : "Policia de la Cuidad - Comisaría 15",
+	nombre : "CABA - Comisaría 15",
 	username: "policia",
 	tipo : "Seguridad",
 	posicion : {

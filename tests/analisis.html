@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Análisis</title>
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/analisis.css?v=0" />
+  </head>
+  <body>
+    <div class="analisis-header" id="analisis">
+      <div class="dropdown" style="display: inline-block;">
+        <button
+          id="analisis-dropdown-entidades-btn"
+          class="btn dropdown-toggle"
+          type="button"
+          data-toggle="dropdown"
+        >
+          Entidades<span class="caret"></span>
+        </button>
+        <ul id="analisis-dropdown-entidades" class="dropdown-menu">
+          <input
+            id="analisis-buscador-entidades"
+            class="form-control"
+            type="text"
+            placeholder="Search.."
+            onkeyup="buscarEntidades()"
+          />
+        </ul>
+      </div>
+      <div class="dropdown" style="display: inline-block;">
+        <button
+          id="analisis-dropdown-recursos-btn"
+          class="btn dropdown-toggle"
+          type="button"
+          data-toggle="dropdown"
+        >
+          Recursos<span class="caret"></span>
+        </button>
+        <ul id="analisis-dropdown-recursos" class="dropdown-menu">
+          <input
+            id="analisis-buscador-recursos"
+            class="form-control"
+            type="text"
+            placeholder="Search.."
+            onkeyup="buscarRecursos()"
+          />
+        </ul>
+      </div>
+      <div class="dropdown" style="display: inline-block;">
+        <button
+          id="analisis-dropdown-responsables-btn"
+          class="btn dropdown-toggle"
+          type="button"
+          data-toggle="dropdown"
+        >
+          Responsables<span class="caret"></span>
+        </button>
+        <ul id="analisis-dropdown-responsables" class="dropdown-menu">
+          <input
+            id="analisis-buscador-responsables"
+            class="form-control"
+            type="text"
+            placeholder="Search.."
+            onkeyup="buscarResponsables()"
+          />
+        </ul>
+      </div>
+    </div>
+    <div class="analisis-data-container">
+      <table class="analisis-table table">
+        <thead class="analisis-table-header">
+          <tr>
+            <th scope="col" class="analisis-col" onclick="ordenar('recurso')">
+              Recurso<span
+                id="analisis-caret-recurso"
+                class="caret analisis-caret"
+              ></span>
+            </th>
+            <th
+              scope="col"
+              class="analisis-col"
+              onclick="ordenar('disponible')"
+            >
+              Disponible<span id="analisis-total-disponible"></span
+              ><span
+                id="analisis-caret-disponible"
+                class="caret analisis-caret"
+              ></span>
+            </th>
+            <th scope="col" class="analisis-col" onclick="ordenar('faltante')">
+              Faltante<span id="analisis-total-faltante"></span
+              ><span
+                id="analisis-caret-faltante"
+                class="caret analisis-caret"
+              ></span>
+            </th>
+            <th
+              scope="col"
+              class="analisis-col"
+              onclick="ordenar('responsable')"
+            >
+              Responsable<span
+                id="analisis-caret-responsable"
+                class="caret analisis-caret"
+              ></span>
+            </th>
+            <th scope="col" class="analisis-col" onclick="ordenar('entidad')">
+              Entidad<span
+                id="analisis-caret-entidad"
+                class="caret analisis-caret"
+              ></span>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="analisis-table-recursos" class="analisis-table-body"></tbody>
+      </table>
+    </div>
+    <script src="../js/datos.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/analisis.js"></script>
+  </body>
+</html>
