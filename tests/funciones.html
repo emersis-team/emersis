@@ -18,12 +18,12 @@
 
 	<!-- isJefe -->
 	<p>
-		isJefe: <input type="text" id="jefe">
+		isColaborador: <input type="text" id="jefe">
 	</p>
-	<button onclick="checkIsJefe()">Test!</button>
+	<button onclick="checkIsColaborador()">Test!</button>
 
 	<p>
-		Value: <span id="isJefe"></span>
+		Value: <span id="isColaborador"></span>
 	</p>
 
 	<!-- isUsuario -->
@@ -49,9 +49,9 @@
 		}
 	</script>
 	<script>
-		function checkIsJefe() {
+		function checkIsColaborador() {
 			var user = document.getElementById("jefe").value;
-			document.getElementById("isJefe").innerHTML = isJefe(user);
+			document.getElementById("isColaborador").innerHTML = isColaborador(user);
 		}
 	</script>
 	<script>
