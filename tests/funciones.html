@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<script src="../js/datos.js"></script>
+</head>
+<body>
+
+	<!-- isCoordinador -->
+	<p>
+		isCoordinador: <input type="text" id="coordinador">
+	</p>
+	<button onclick="checkIsCoordinador()">Test!</button>
+
+	<p>
+		Value: <span id="isCoordinador"></span>
+	</p>
+
+	<!-- isJefe -->
+	<p>
+		isJefe: <input type="text" id="jefe">
+	</p>
+	<button onclick="checkIsJefe()">Test!</button>
+
+	<p>
+		Value: <span id="isJefe"></span>
+	</p>
+
+	<!-- isUsuario -->
+	<p>
+		isUsuario: <input type="text" id="usuario" value="usuario"> <input
+			type="text" id="pass" value="***">
+	</p>
+	<button onclick="checkIsUsuario()">Test!</button>
+
+	<p>
+		Value: <span id="isUsuario"></span>
+	</p>
+
+	<p>
+		<strong>Note:</strong> The find() method is not supported in IE 11
+		(and earlier versions).
+	</p>
+
+	<script>
+		function checkIsCoordinador() {
+			var user = document.getElementById("coordinador").value;
+			document.getElementById("isCoordinador").innerHTML = isCoordinador(user);
+		}
+	</script>
+	<script>
+		function checkIsJefe() {
+			var user = document.getElementById("jefe").value;
+			document.getElementById("isJefe").innerHTML = isJefe(user);
+		}
+	</script>
+	<script>
+		function checkIsUsuario() {
+			var user = document.getElementById("usuario").value;
+			var pass = document.getElementById("pass").value;
+			document.getElementById("isUsuario").innerHTML = isUsuario(user,
+					pass);
+		}
+	</script>
+
+</body>
+</html>
