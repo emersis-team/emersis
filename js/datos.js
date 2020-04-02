@@ -47,6 +47,7 @@ var recursos = [ {
 var entidades = [ {
 	id : 0,
 	nombre : "Hospital Militar",
+	username: "hospitalmilitar",
 	tipo : "Sanidad",
 	posicion : {
 		latitud : -34.5703072,
@@ -81,6 +82,7 @@ var entidades = [ {
 }, {
 	id : 1,
 	nombre : "Policia de la Cuidad - Comisaría 15",
+	username: "policia",
 	tipo : "Seguridad",
 	posicion : {
 		latitud : -34.5915316,
@@ -115,6 +117,7 @@ var entidades = [ {
 }, {
 	id : 2,
 	nombre : "Centro de Evacuación",
+	username: "centroevacuacion",
 	tipo : "Sanidad",
 	posicion : {
 		latitud : -31.5317743,
@@ -198,7 +201,7 @@ var emergencias = [
 		} ];
 
 function isUsuario(user, pass) {
-	return (pass == "123") && (isCoordinador(user) || isJefe(user));
+	return (pass == "123") && (isCoordinador(user) || isColaborador(user));
 }
 
 function isCoordinador(user) {
@@ -206,9 +209,10 @@ function isCoordinador(user) {
 	return coordinadores.includes(user);
 }
 
-function isJefe(user) {
-	var jefes = entidades.map(usuarioEntidad);
-	return jefes.includes(user);
+function isColaborador(user) {
+	var colavorador = entidades.map(usuarioEntidad);
+	debugger;
+	return colavorador.includes(user);
 }
 
 function usuarioCoordinador(emergencia) {
@@ -216,9 +220,5 @@ function usuarioCoordinador(emergencia) {
 }
 
 function usuarioEntidad(entidad) {
-	return entidad.datosContacto.responsable.nombre;
-}
-
-function entidadUsuario(user) {
-	return entidades.find(usuarioEntidad);
+	return entidad.username;
 }
