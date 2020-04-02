@@ -1,68 +1,107 @@
 ﻿<!-- Barra Menu -->
-
 <nav class="navbar navbar-default" id="barramenu">
-	<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
 
-		<a class="navbar-brand" href="/"><img style="height: 100%;" src="./images/icon_emersis.png" /></a>
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-			data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-			aria-expanded="false">
-			<span class="sr-only">Toggle navigation</span> <span
-			class="icon-bar"></span> <span class="icon-bar"></span> <span
-			class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand" href="#"> EMERSIS </a>
-	</div>
+        <a class="navbar-brand" href="/"><img style="height: 100%;" src="./images/icon_emersis.png"/></a>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"> EMERSIS </a>
+        </div>
 
-	<!-- Collect the nav links, forms, and other content for toggling -->
-	<div class="collapse navbar-collapse"
-	id="bs-example-navbar-collapse-1">
-	<ul class="nav navbar-nav">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse"
+             id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
 
-		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-				Emergencias <span class="caret"></span>
-			</a>
-			<ul class="dropdown-menu">
-				<li id="emergenciasLista">
-					<!-- Se agregan automaticamente -->
-				</li>
-			</ul>
-		</li>
-		<li class="dropdown"><a href="#"> Alertas </a></li>
-	</ul>
-	<ul class="nav navbar-nav navbar-right">
-		<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" id="username"> Usuario <span class="caret"></span>
-		</a>
-		<ul class="dropdown-menu">
-			<li><a class="" data-toggle="modal" href="#" id="btnLogin">Iniciar
-			Sesión</a></li>
-			<li><a onclick="cerrarSesion()" href="#">Salir</a></li>
-		</ul></li>
-	</ul>
-</div>
-<div id="modalhere"></div>
-<!-- /.navbar-collapse -->
-</div>
-<!-- /.container-fluid -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Emergencias <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li id="emergenciasLista">
+                            <!-- Se agregan automaticamente -->
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                	<a href="#" data-toggle="modal" id="alertas"> Alertas </a>
+                </li>
+                <li class="dropdown">
+                	<a href="#" data-toggle="modal" id="situacion"> Recursos </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="modal" id="analisis"> Análisis </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" id="username"> Usuario
+                    <span class="caret"></span>
+                </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="" data-toggle="modal" href="#" id="btnLogin">Iniciar Sesión</a></li>
+                        <li><a onclick="cerrarSesion()" href="#">Salir</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div id="modalhere">
+
+
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
 </nav>
 
 <script>
-	$(document).ready(function() {
+    $(document).ready(function () {
+    	
+    	$("#alertas").click(function () {
 
-		$("#btnLogin").click(function() {
-			$("#modalhere").load("./html/login.html", function() {
-				$("#login").modal();
-			});
-		});
-	});
+            $("#modalhere").empty();
+            $("#modalhere").load("./html/alertas.html", function () {
+                $("#alertasModal").modal();
+            });
+        });
+    	
+    	$("#situacion").click(function () {
 
-	function cerrarSesion() {
-		eraseCookie("username");
-		location.reload();
-	};
+            $("#modalhere").empty();
+            $("#modalhere").load("./html/situacion.html", function () {
+                $("#situacionModal").modal();
+            });
+        });
+
+        $("#analisis").click(function () {
+
+            $("#modalhere").empty();
+            $("#modalhere").load("./html/analisis.html", function () {
+                $("#analisisModal").modal();
+            });
+        });
+
+        $("#btnLogin").click(function () {
+
+            $("#modalhere").empty();
+            $("#modalhere").load("./html/login.html", function () {
+                $("#login").modal();
+            });
+
+        });
+    });
+
+    function cerrarSesion() {
+        eraseCookie("username");
+        location.reload();
+    };
 
 
 </script>
@@ -70,61 +109,62 @@
 
 <style>
 
-	/* change the background color */
-	.navbar-default {
-		background-color: #666666;
-	}
-	/* change the brand and text color */
-	.navbar-default .navbar-brand,
-	.navbar-default .navbar-text {
-		color: #ffffff;
-	}
+    /* change the background color */
+    .navbar-default {
+        background-color: #666666;
+    }
 
-	/* change the link color */
-	.navbar-default .navbar-nav .nav-link {
-		color: #ffffff;
-	}
+    /* change the brand and text color */
+    .navbar-default .navbar-brand,
+    .navbar-default .navbar-text {
+        color: #ffffff;
+    }
 
-	/* change the color of active or hovered links */
-	.navbar-default .nav-item.active .nav-link,
-	.navbar-default .nav-item:focus .nav-link,
-	.navbar-default .nav-item:hover .nav-link {
-		color: #ffffff;
-	}
+    /* change the link color */
+    .navbar-default .navbar-nav .nav-link {
+        color: #ffffff;
+    }
 
-	.navbar-default .navbar-nav > li > a {
-		color: #ffffff;
-	}
+    /* change the color of active or hovered links */
+    .navbar-default .nav-item.active .nav-link,
+    .navbar-default .nav-item:focus .nav-link,
+    .navbar-default .nav-item:hover .nav-link {
+        color: #ffffff;
+    }
 
-	.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
-		color: #000000;
-		background-color: transparent;
-	}
+    .navbar-default .navbar-nav > li > a {
+        color: #ffffff;
+    }
 
-	.navbar-default .navbar-nav .open .dropdown-menu > li > a {
-		color: #ffffff;
-	}
+    .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+        color: #000000;
+        background-color: transparent;
+    }
 
-	.navbar-nav > li > .dropdown-menu {
-		background-color: #666;
-	}
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #ffffff;
+    }
 
-	.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
-		color: black;
-	}
+    .navbar-nav > li > .dropdown-menu {
+        background-color: #666;
+    }
 
-	/* Modal */
-	.modal-content {
-		background-color: #666666;
-	}
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+        color: black;
+    }
 
-	.form-control {
-		background-color: #c8c8c8;
-	}
+    /* Modal */
+    .modal-content {
+        background-color: #666666;
+    }
 
-	.modal .modal-header {
-		background-color: #ffffff
-	}
+    .form-control {
+        background-color: #c8c8c8;
+    }
+
+    .modal .modal-header {
+        background-color: #ffffff
+    }
 
 
 </style>
