@@ -15,15 +15,3 @@ var control = L.control.layers(null, null, {
 	collapsed : true,
 	position : 'bottomright'
 }).addTo(mymap);
-
-agregarEntidad(-34.574503, -58.435714);
-agregarAlcance(-34.574503, -58.435714, "green", 0.3, 75);
-agregarCalco('./examples/primerosContagios.kmz');
-agregarCalco('./examples/zonaInundadaRioUruguay.kmz');
-agregarCalco('./examples/zonaTerremotosSanJuan.kmz');
-agregarCalco('./examples/desbordamientoRioParana.kmz');
-agregarCalco('./examples/desbordamientoRioParana2.kmz');
-
-mymap.on('baselayerchange', function(e) {
-	console.log(e);
-});
