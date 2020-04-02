@@ -75,17 +75,19 @@ var entidades = [
 
 var responsables = [];
 var recursos = [];
-var entidadesAgrupadas = [];
+var entidadesEnTabla = [];
 
 var entidadFiltro = null;
 var recursoFiltro = null;
 var responsableFiltro = null;
+var ascendente = false;
+var ultimoOrden = null;
 
 agruparEntidades(entidades);
 agregarEntidadesADropdown(entidades);
 
 function agruparEntidades(array) {
-  entidadesAgrupadas = [];
+  var entidadesAgrupadas = [];
   array.forEach(function(e) {
     e.capacidades.forEach(function(c) {
       if (
@@ -96,7 +98,7 @@ function agruparEntidades(array) {
         entidadesAgrupadas.push({
           id: e.id,
           nombre: e.nombre,
-          datosContacto: e.datosContacto,
+          responsable: e.datosContacto.responsable,
           recurso: {
             id: c.id,
             nombre: c.nombre,
@@ -118,7 +120,7 @@ function agruparEntidades(array) {
         entidadesAgrupadas.push({
           id: e.id,
           nombre: e.nombre,
-          datosContacto: e.datosContacto,
+          responsable: e.datosContacto.responsable,
           recurso: {
             id: n.id,
             nombre: n.nombre,
@@ -136,6 +138,7 @@ function agruparEntidades(array) {
   agregarEntidadesATabla(entidadesAgrupadas);
 }
 function agregarEntidadesATabla(array) {
+  entidadesEnTabla = [];
   $(".analisis-table-body").empty();
   var index = 0;
   var cantidadDisponibleTotal = 0;
@@ -145,11 +148,11 @@ function agregarEntidadesATabla(array) {
       (entidadFiltro == null ||
         (entidadFiltro != null && e.id == entidadFiltro.id)) &&
       (responsableFiltro == null ||
-        (responsableFiltro != null &&
-          e.datosContacto.responsable.id == responsableFiltro.id))
+        (responsableFiltro != null && e.responsable.id == responsableFiltro.id))
     ) {
       index++;
       if (recursoFiltro == null || e.recurso.id == recursoFiltro.id) {
+        entidadesEnTabla.push(e);
         cantidadDisponibleTotal =
           cantidadDisponibleTotal +
           (e.recurso.cantidadDisponible != null
@@ -176,7 +179,7 @@ function agregarEntidadesATabla(array) {
             : "-") +
           "</td>" +
           "<td>" +
-          e.datosContacto.responsable.nombre +
+          e.responsable.nombre +
           "</td>" +
           "<td>" +
           e.nombre +
@@ -281,7 +284,7 @@ function buscarResponsables() {
     .val()
     .toLowerCase();
   var responsablesFiltradas = responsables.filter(
-    e => e.toLowerCase().indexOf(value) > -1
+    e => e.nombre.toLowerCase().indexOf(value) > -1
   );
   agregarResponsablesADropdown(responsablesFiltradas);
 }
@@ -347,4 +350,56 @@ function resetResponsables() {
   $("#analisis-dropdown-responsables-btn").text("Todos");
   document.getElementById("analisis-dropdown-responsables-btn").innerHTML +=
     '<span class="caret"></span>';
+}
+function ordenar(col) {
+  $(".analisis-caret").css("opacity", 0);
+  if (this.ultimoOrden == col) {
+    this.ascendente = !this.ascendente;
+  } else {
+    this.ascendente = true;
+  }
+  ultimoOrden = col;
+  var entidadesOrdenadas = [];
+  switch (col) {
+    case "recurso":
+    case "responsable":
+      entidadesOrdenadas = ordenarJson2doOrden(
+        entidadesEnTabla,
+        col,
+        "nombre",
+        this.ascendente
+      );
+      break;
+    case "disponible":
+      entidadesOrdenadas = ordenarJson2doOrden(
+        entidadesEnTabla,
+        "recurso",
+        "cantidadDisponible",
+        this.ascendente
+      );
+      break;
+    case "faltante":
+      entidadesOrdenadas = ordenarJson2doOrden(
+        entidadesEnTabla,
+        "recurso",
+        "cantidadFaltante",
+        this.ascendente
+      );
+      break;
+    case "entidad":
+      entidadesOrdenadas = ordenarJsonArray(
+        entidadesEnTabla,
+        "nombre",
+        this.ascendente
+      );
+      break;
+  }
+  var id = "#analisis-caret-" + col;
+  $(id).css("opacity", 1);
+  if (this.ascendente == true) {
+    $(id).css("transform", "rotate(0deg)");
+  } else {
+    $(id).css("transform", "rotate(180deg)");
+  }
+  agregarEntidadesATabla(entidadesOrdenadas);
 }

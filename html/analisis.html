@@ -79,16 +79,45 @@
       <table class="analisis-table table">
         <thead class="analisis-table-header">
           <tr>
-            <th scope="col">Recurso</th>
-            <th scope="col">
-              Disponible <span id="analisis-total-disponible"></span>
+            <th scope="col" class="analisis-col" onclick="ordenar('recurso')">
+              Recurso<span
+                id="analisis-caret-recurso"
+                class="caret analisis-caret"
+              ></span>
             </th>
-            <th scope="col">
-              Faltante <span id="analisis-total-faltante"></span>
+            <th
+              scope="col"
+              class="analisis-col"
+              onclick="ordenar('disponible')"
+            >
+              Disponible<span id="analisis-total-disponible"></span
+              ><span
+                id="analisis-caret-disponible"
+                class="caret analisis-caret"
+              ></span>
             </th>
-            <th scope="col">Responsable</th>
-            <th scope="col">
-              Entidad
+            <th scope="col" class="analisis-col" onclick="ordenar('faltante')">
+              Faltante<span id="analisis-total-faltante"></span
+              ><span
+                id="analisis-caret-faltante"
+                class="caret analisis-caret"
+              ></span>
+            </th>
+            <th
+              scope="col"
+              class="analisis-col"
+              onclick="ordenar('responsable')"
+            >
+              Responsable<span
+                id="analisis-caret-responsable"
+                class="caret analisis-caret"
+              ></span>
+            </th>
+            <th scope="col" class="analisis-col" onclick="ordenar('entidad')">
+              Entidad<span
+                id="analisis-caret-entidad"
+                class="caret analisis-caret"
+              ></span>
             </th>
           </tr>
         </thead>

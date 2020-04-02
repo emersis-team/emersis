@@ -40,3 +40,9 @@ body {
   vertical-align: middle;
   border-color: inherit;
 }
+.analisis-caret {
+  opacity: 0;
+}
+.analisis-col {
+  cursor: pointer;
+}
