@@ -47,7 +47,7 @@ var recursos = [ {
 var entidades = [ {
 	id : 0,
 	nombre : "Hospital Militar",
-	username: "hospitalmilitar",
+	username: "hmc",
 	tipo : "Sanidad",
 	posicion : {
 		latitud : -34.5703072,
@@ -56,7 +56,7 @@ var entidades = [ {
 	datosContacto : {
 		responsable : {
 			id : 0,
-			nombre : "coronel"
+			nombre : "Coronel Firme"
 		},
 		telefono : "4444444",
 		dirección : "direccion1"
@@ -91,7 +91,7 @@ var entidades = [ {
 	datosContacto : {
 		responsable : {
 			id : 1,
-			nombre : "comisario"
+			nombre : "Comisario Regio"
 		},
 		telefono : "4444444",
 		dirección : "direccion 2"
@@ -117,7 +117,7 @@ var entidades = [ {
 }, {
 	id : 2,
 	nombre : "Centro de Evacuación",
-	username: "centroevacuacion",
+	username: "centro",
 	tipo : "Sanidad",
 	posicion : {
 		latitud : -31.5317743,
@@ -126,7 +126,7 @@ var entidades = [ {
 	datosContacto : {
 		responsable : {
 			id : 2,
-			nombre : "doctor"
+			nombre : "Doctor Cureta"
 		},
 		telefono : "4444444",
 		dirección : "direccion 3"
@@ -210,9 +210,8 @@ function isCoordinador(user) {
 }
 
 function isColaborador(user) {
-	var colavorador = entidades.map(usuarioEntidad);
-	debugger;
-	return colavorador.includes(user);
+	var colaboradores = entidades.map(usuarioEntidad);
+	return colaboradores.includes(user);
 }
 
 function usuarioCoordinador(emergencia) {
