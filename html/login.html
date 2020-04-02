@@ -41,7 +41,7 @@
 					<div class="form-group">
 						<label for=""></label>
 						<div>
-							<button class="btn btn-block btn-lg btn-dark"
+							<button type="button" class="btn btn-block btn-lg btn-dark"
 								id="form-login-ingresar" data-loading-text="Ingresando..." onclick="iniciarSesion()" >
 								Ingresar
 							</button>
@@ -74,6 +74,7 @@
 					if(isUsuario(username, pass))
 					{
 						setCookie("username", username, new Date());
+						 document.location.href="index.html"; 
 					}
 				}
 
