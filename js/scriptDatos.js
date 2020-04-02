@@ -15,6 +15,7 @@ var recursos = [
 var entidades = [
   {
     id: 0,
+    username: "hospitalmilitar",
     nombre: "Hospital Militar",
 	tipo: "Sanidad",
     posicion: {
@@ -41,6 +42,7 @@ var entidades = [
   {
     id: 1,
     nombre: "Policia de la Cuidad - Comisaría 15",
+    username: "Policia",
 	tipo: "Seguridad",
     posicion: {
       latitud: -34.5915316,
@@ -66,6 +68,7 @@ var entidades = [
   {
     id: 2,
     nombre: "Centro de Evacuación",
+    username: "centroeducativo",
 	tipo: "Sanidad",
     posicion: {
       latitud: -31.5317743,

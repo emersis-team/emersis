@@ -24,7 +24,7 @@
 					<div class="form-group">
 						<label for="username" class="control-label">Usuario</label>
 						<div>
-							<input class="form-control"
+							<input class="form-control" id="usuario"
 								placeholder="Ingrese su nombre de usuario" type="text"
 								autofocus="true," maxlenght="150" />
 						</div>
@@ -41,8 +41,8 @@
 					<div class="form-group">
 						<label for=""></label>
 						<div>
-							<button type="submit" class="btn btn-block btn-lg btn-dark"
-								id="form-login-ingresar" data-loading-text="Ingresando...">
+							<button  type="submit" class="btn btn-block btn-lg btn-dark"
+								id="form-login-ingresar" data-loading-text="Ingresando..." onclick="iniciarSesion()" >
 								Ingresar
 							</button>
 						</div>
@@ -61,5 +61,19 @@
 		} else {
 			x.type = "password";
 		}
+	};
+
+		function iniciarSesion() {
+			var pass = document.getElementById("password").value;
+			var username = document.getElementById("usuario").value;
+
+			$.each(entidades, function(num) {
+				if(entidades[num].username == username)
+				{
+					setCookie("username", username, new Date())
+				}
+
+			});
+
 	}
 </script>
