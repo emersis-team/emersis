@@ -146,6 +146,7 @@ function loadUserData() {
 		}
         document.getElementById("username").text = nombreVisible;
         document.getElementById("btnSalir").classList.remove("hidden");
+        document.getElementById("alertas").classList.remove("hidden");
   	}
     
     if (isCoordinador(username)) {
