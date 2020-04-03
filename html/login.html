@@ -1,4 +1,4 @@
-﻿<!-- Modal Login -->
+<!-- Modal Login -->
 <div class="modal fade" id="login" role="dialog">
 	<div class="modal-dialog">
 		<!-- Modal content-->
@@ -64,8 +64,8 @@
 	};
 
 	function iniciarSesion() {
-		var pass = document.getElementById("password").value;
-		var username = document.getElementById("usuario").value;
+		var pass = document.getElementById("password").value.toLowerCase();
+		var username = document.getElementById("usuario").value.toLowerCase();
 		if (isUsuario(username, pass)) {
 			setCookie("username", username, new Date());
 			document.location.href = "index.html";
