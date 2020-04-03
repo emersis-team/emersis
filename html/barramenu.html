@@ -81,20 +81,18 @@
         });
 
         $("#analisis").click(function () {
-
             $("#modalhere").empty();
             $("#modalhere").load("./html/analisis.html", function () {
                 $("#analisisModal").modal();
+                cargarAnalisisDeEmergencia();
             });
         });
 
         $("#btnLogin").click(function () {
-
             $("#modalhere").empty();
             $("#modalhere").load("./html/login.html", function () {
                 $("#login").modal();
             });
-
         });
     });
 
@@ -102,8 +100,6 @@
         eraseCookie("username");
         location.reload();
     };
-
-
 </script>
 
 
