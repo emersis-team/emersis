@@ -173,8 +173,15 @@ var emergencias = [
 				tipo : "Anuncio",
 				texto : "Deben lavarse las manos con abundante jabón durante al menos 30 segundos"
 			},
-		{
+				{
 				id : 1,
+				titulo : "Recomendaciones de convivencia",
+				fecha : new Date("2020/03/27"),
+				tipo : "Anuncio",
+				texto : "Se aconseja no saludar con beso o con las manos, y tampoco compartir el mate"
+			},
+			{
+				id : 2,
 				titulo : "Aislamiento social, preventivo y obligatorio",
 				fecha : new Date("2020/03/29"),
 				tipo : "Anuncio",
