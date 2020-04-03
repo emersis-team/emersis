@@ -221,3 +221,23 @@ function usuarioCoordinador(emergencia) {
 function usuarioEntidad(entidad) {
 	return entidad.username;
 }
+
+function entidadDeUsuario(usuario) {
+	var entidad;
+	$.each(entidades, function (num) {
+        if (entidades[num].username == usuario) {
+            entidad = entidades[num];
+        }
+    });
+	return entidad;
+}
+
+function emergenciaDeUsuario(usuario) {
+	var emergencia;
+	$.each(emergencias, function (num) {
+        if (emergencias[num].usuarioCoordinador == usuario) {
+        	emergencia = emergencias[num];
+        }
+    });
+	return emergencia;
+}
