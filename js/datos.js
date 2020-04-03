@@ -1,4 +1,4 @@
-var recursos = [ {
+﻿var recursos = [ {
 	id : 0,
 	nombre : "Camión Transporte",
 	tipo : "Vehículo"
@@ -172,6 +172,13 @@ var emergencias = [
 				fecha : new Date("2020/03/25"),
 				tipo : "Anuncio",
 				texto : "Deben lavarse las manos con abundante jabón durante al menos 30 segundos"
+			},
+		{
+				id : 1,
+				titulo : "Aislamiento social, preventivo y obligatorio",
+				fecha : new Date("2020/03/29"),
+				tipo : "Anuncio",
+				texto : "El aislamiento fue extendido hasta el 13 de Abril de 2020"
 			} ]
 		},
 		{
