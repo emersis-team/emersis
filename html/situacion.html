@@ -2,7 +2,7 @@
 <div class="modal fade" id="situacionModal" role="dialog">
 	<div class="modal-dialog">
 		<!-- Modal content-->
-		<div class="modal-content">
+		<div class="modal-content" style="height: 900px;">
 			<div class="modal-header">
 				<div class="col-12">
 					<button type="button" class="close" data-dismiss="modal">
@@ -10,34 +10,36 @@
 				</div>
 				<br />
 				<div class="col-3 col-md-3 col-sm-3" style="text-align: center;">
-					<h2 class="modal-title">Situacion:</h2>
+					<h2 class="modal-title">Situación:</h2>
 				</div>
 				<div class="col-9 col-md-9 col-sm-9">
-					<h2 id="nombreEntidad" class="modal-title">Entidad</h2>
+					<h2 id="nombreEntidadRecursos"
+						class="modal-title nombreEntidadRecursos">Entidad</h2>
 				</div>
 			</div>
 			<div class="modal-body">
-				<div class="control-group" id="listaDeRecursos">
+				<div class="control-group listaDeRecursos" id="listaDeRecursos">
 					<label for="username" class="control-label">Recursos</label>
-
-					<div class="hidden" id="lineaRelleno">
+					<div class="hidden lineaRelleno" id="lineaRelleno">
 						<div class="controls form-inline">
-							<input type="text" class="col-9 col-md-9 col-sm-9" id="recurso">
-							<input type="text" style="margin-left: 5px"
-								class="col-2 col-md-2 col-sm-2" id="cantidad">
+							<input type="text" class="col-9 col-md-9 col-sm-9 recurso"
+								id="recurso"> <input type="text"
+								style="margin-left: 5px"
+								class="col-2 col-md-2 col-sm-2 cantidad" id="cantidad">
 						</div>
 					</div>
 				</div>
 				<br />
-				<button class="btn btn-default" type="button">Agregar</button>
+				<button class="btn btn-default" type="button"
+					onclick="agregarEnRecurso()">Agregar</button>
 				<br /> <br />
 				<div class="control-group" id="listaDeNecesidades">
-					<label for="username" class="control-label">Necesidades</label>
+					<label class="control-label">Necesidades</label>
 				</div>
 				<br />
-				<button class="btn btn-default" type="button">Agregar</button>
+				<button class="btn btn-default" type="button"
+					onclick="agregarEnNecesidad()">Agregar</button>
 			</div>
 		</div>
 	</div>
 </div>
-
