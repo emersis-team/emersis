@@ -63,22 +63,12 @@
 		}
 	};
 
-		function iniciarSesion() {
-			var pass = document.getElementById("password").value;
-			var username = document.getElementById("usuario").value;
-
-			$.each(entidades, function(num) {
-				if(entidades[num].username == username)
-				{
-					debugger;
-					if(isUsuario(username, pass))
-					{
-						setCookie("username", username, new Date());
-						 document.location.href="index.html"; 
-					}
-				}
-
-			});
-
+	function iniciarSesion() {
+		var pass = document.getElementById("password").value;
+		var username = document.getElementById("usuario").value;
+		if (isUsuario(username, pass)) {
+			setCookie("username", username, new Date());
+			document.location.href = "index.html";
+		}
 	}
 </script>
