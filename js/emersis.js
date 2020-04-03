@@ -108,6 +108,14 @@ function eraseCookie(name) {
 function loadUserData() {
 
     var username = getCookie("username");
+    
+    if (isColaborador(username)) {
+        document.getElementById("situacion").classList.remove("hidden");
+	}
+    
+    if (isCoordinador(username)) {
+        document.getElementById("analisis").classList.remove("hidden");
+	}
 
     $.each(entidades, function (num) {
         if (entidades[num].username == username) {
