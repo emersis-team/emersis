@@ -137,20 +137,26 @@ function loadUserData() {
     var username = getCookie("username");
     
     if (isColaborador(username)) {
+    	var nombreVisible = "Colaborador";
         document.getElementById("situacion").classList.remove("hidden");
-	}
+        document.getElementById("btnLogin").classList.add("hidden");
+        var entidad = entidadDeUsuario(username);
+        if (entidad != null) {
+        	nombreVisible = entidad.nombre;
+		}
+        document.getElementById("username").text = nombreVisible;
+  	}
     
     if (isCoordinador(username)) {
+    	var nombreVisible = "Coordinador";
         document.getElementById("analisis").classList.remove("hidden");
+        document.getElementById("btnLogin").classList.add("hidden");
+        var emergencia = emergenciaDeUsuario(username);
+        if (emergencia != null) {
+        	nombreVisible = emergencia.nombre;
+		}
+        document.getElementById("username").text = nombreVisible;
 	}
-
-    $.each(entidades, function (num) {
-        if (entidades[num].username == username) {
-            document.getElementById("username").text = entidades[num].nombre;
-            document.getElementById("btnLogin").classList.add("hidden");
-        }
-    });
-
 
     $.each(emergencias, function (num) {
         var link = document.createElement("a");
