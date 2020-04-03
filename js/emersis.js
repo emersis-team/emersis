@@ -11,36 +11,35 @@ function initEmersis() {
 
 }
 
-var ambulanceIcon = L.icon({
-    iconUrl: "https://www.stickpng.com/assets/images/5afac8866554160a79bea11f.png",
-
-    iconSize: [32, 32], // size of the icon
-    shadowSize: [50, 64], // size of the shadow
-    shadowAnchor: [4, 62], // the same for the shadow
-    popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+var sanidadIcon = L.icon({
+    iconUrl: "./images/sanidad.png",
+    iconSize: [32, 32]
 });
 
-var hummerIcon = L.icon({
-    iconUrl: "https://www.spore.com/static/image/500/547/145/500547145370_lrg.png",
-
-    iconSize: [32, 32], // size of the icon
-    shadowSize: [50, 64], // size of the shadow
-    shadowAnchor: [4, 62], // the same for the shadow
-    popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+var seguridadIcon = L.icon({
+    iconUrl: "./images/seguridad.png",
+    iconSize: [32, 32]
 });
 
 
-function agregarEntidad(x, y, tipo) {
+function agregarEntidad(entidad) {
 
     // Fix Temporal hasta mejorar los tipos
+
     var currentIcon = null;
-    if (tipo == "Sanidad")
-        currentIcon = ambulanceIcon;
-    if (tipo == "Seguridad")
-        currentIcon = hummerIcon;
-    L.marker([x, y], {
+    if (entidad.tipo == "Sanidad")
+        currentIcon = sanidadIcon;
+    if (entidad.tipo == "Seguridad")
+        currentIcon = seguridadIcon;
+    var marker = L.marker([entidad.posicion.latitud, entidad.posicion.longitud], {
         icon: currentIcon
     }).addTo(mymap);
+
+    marker.bindTooltip(entidad.nombre, {
+        permanent: true, 
+        direction: 'top',offset: L.point({x: 0, y: -15})
+    });
+    marker.bindPopup("<img src='./images/contacto.png' height='24' width='24'/>" + entidad.datosContacto.responsable.nombre + "</br></br><img src='./images/number.png' height='24' width='24'/>" + entidad.datosContacto.telefono);
 }
 
 function agregarCalco(ruta) {
@@ -59,14 +58,42 @@ function agregarAlcance(x, y, color, transparencia, radio) {
 var emergenciaActual;
 
 function refrescarEmergencia(emergencia) {
+    limpiarMapa();
     emergenciaActual = obtenerEmergencia(emergencia);
-    emergenciaActual.entidades.forEach(function (entry) {
-        agregarEntidad(entry.posicion.latitud, entry.posicion.longitud, entry.tipo);
+    emergenciaActual.entidades.forEach(function (entidad) {
+        agregarEntidad(entidad);
     });
 
-    emergenciaActual.calcos.forEach(function (entry) {
-        agregarCalco("./examples/" + entry);
+    emergenciaActual.calcos.forEach(function (calco) {
+        agregarCalco("./examples/" + calco);
     });
+
+}
+
+function limpiarMapa() {
+
+    // Este metodo re inicia todo el mapa, hay que ver si existe una manera mas limpia de hacerlo
+    mymap.eachLayer(function (layer) {
+        mymap.removeLayer(layer);
+    });
+
+    control.remove();
+    control = L.control.layers(null, null, {
+        collapsed: true,
+        position: 'bottomright'
+    }).addTo(mymap);
+
+    L.tileLayer(
+        "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
+        {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, '
+                + '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, '
+                + 'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: "mapbox/streets-v11",
+            tileSize: 512,
+            zoomOffset: -1
+        }).addTo(mymap);
 
 }
 
