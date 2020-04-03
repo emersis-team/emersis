@@ -145,6 +145,7 @@ function loadUserData() {
         	nombreVisible = entidad.nombre;
 		}
         document.getElementById("username").text = nombreVisible;
+        document.getElementById("btnSalir").classList.remove("hidden");
   	}
     
     if (isCoordinador(username)) {
@@ -156,6 +157,7 @@ function loadUserData() {
         	nombreVisible = emergencia.nombre;
 		}
         document.getElementById("username").text = nombreVisible;
+        document.getElementById("btnSalir").classList.remove("hidden");
 	}
 
     $.each(emergencias, function (num) {
