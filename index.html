@@ -37,9 +37,9 @@
 
 </div>
 
-<!-- 	Carga Datos -->
 <script src="./js/datos.js"></script>
-<!-- 	Carga la Barra -->
+<script src="./js/emersis.js"></script>
+<script src="./js/mapa.js"></script>
 <script>
 
     async function fetchPages() {
@@ -52,12 +52,16 @@
 
     }
 
-    fetchPages();
+    fetchPages().then(() => {
+
+        loadUserData();
+        initEmersis();
+        initMap();
+
+    });
 
 </script>
-<!-- 	Cargar Mapa -->
-<script src="./js/emersis.js"></script>
-<script src="./js/mapa.js"></script>
+
 </body>
 
 </html>
