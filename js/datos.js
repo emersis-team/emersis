@@ -244,7 +244,9 @@ function emergenciaDeUsuario(usuario) {
 	$.each(emergencias, function (num) {
         if (emergencias[num].usuarioCoordinador == usuario) {
         	emergencia = emergencias[num];
-        }
+        } else if (emergencias[num].entidades.map(usuarioEntidad).includes(usuario)) {
+        	emergencia = emergencias[num];
+		}
     });
 	return emergencia;
 }

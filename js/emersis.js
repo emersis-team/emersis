@@ -181,14 +181,31 @@ function crearBotonCentrar()
 {
     L.easyButton( '<span class="star">&starf;</span>', function(){
         var usuario = getCookie("username");
-        if (isColaborador(usuario)) {
-            var entidad = entidadDeUsuario(usuario);
-            centrarZoom(entidad);
-        }
-
-        if (isCoordinador(getCookie("username"))) {
-            var emergencia = emergenciaDeUsuario(usuario);
-            centrarZoom(emergencia.entidades[0]);
-        }
+        centrarEnUser(usuario);
       }).addTo(mymap);
+}
+
+function loadCalcoMapUser() {
+	var username = getCookie("username");
+	centrarEnUser(username);
+	mostrarCalcosDeUser(username);
+}
+
+function mostrarCalcosDeUser(usuario){
+	var emergencia = emergenciaDeUsuario(usuario);
+    refrescarEmergencia(emergencia.id);
+}
+
+
+
+function centrarEnUser(usuario){
+    if (isColaborador(usuario)) {
+        var entidad = entidadDeUsuario(usuario);
+        centrarZoom(entidad);
+    }
+
+    if (isCoordinador(usuario)) {
+        var emergencia = emergenciaDeUsuario(usuario);
+        centrarZoom(emergencia.entidades[0]);
+    }
 }
