@@ -56,8 +56,10 @@ function agregarAlcance(x, y, color, transparencia, radio) {
     }).addTo(mymap);
 }
 
+var emergenciaActual;
+
 function refrescarEmergencia(emergencia) {
-    var emergenciaActual = obtenerEmergencia(emergencia);
+    emergenciaActual = obtenerEmergencia(emergencia);
     emergenciaActual.entidades.forEach(function (entry) {
         agregarEntidad(entry.posicion.latitud, entry.posicion.longitud, entry.tipo);
     });
@@ -119,6 +121,7 @@ function loadUserData() {
         var link = document.createElement("a");
         link.innerHTML = emergencias[num].nombre;
         link.setAttribute('onclick', 'refrescarEmergencia(' + emergencias[num].id + ')');
+        link.setAttribute('id', emergencias[num].id);
         document.getElementById("emergenciasLista").appendChild(link);
 
     });

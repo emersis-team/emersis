@@ -31,16 +31,17 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                	<a href="#" data-toggle="modal" id="alertas"> Alertas </a>
+                    <a href="#" data-toggle="modal" id="alertas"> Alertas </a>
                 </li>
                 <li class="dropdown">
-                	<a href="#" data-toggle="modal" id="situacion"> Recursos </a>
+                    <a href="#" data-toggle="modal" id="situacion"> Recursos </a>
                 </li>
                 <li class="dropdown">
                     <a href="#" data-toggle="modal" id="analisis"> Análisis </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" id="username"> Usuario
                     <span class="caret"></span>
                 </a>
@@ -63,47 +64,45 @@
 
 <script>
     $(document).ready(function () {
-    	
-    	$("#alertas").click(function () {
+
+        $("#alertas").click(function () {
 
             $("#modalhere").empty();
             $("#modalhere").load("./html/alertas.html", function () {
                 $("#alertasModal").modal();
+                cargarNotificaciones();
             });
         });
-    	
-    	$("#situacion").click(function () {
 
+    	$("#situacion").click(function () {
             $("#modalhere").empty();
             $("#modalhere").load("./html/situacion.html", function () {
                 $("#situacionModal").modal();
+                cargarStuacionDeEntidad();
             });
         });
 
         $("#analisis").click(function () {
-
             $("#modalhere").empty();
             $("#modalhere").load("./html/analisis.html", function () {
                 $("#analisisModal").modal();
+                cargarAnalisisDeEmergencia();
             });
         });
 
         $("#btnLogin").click(function () {
-
             $("#modalhere").empty();
             $("#modalhere").load("./html/login.html", function () {
                 $("#login").modal();
             });
-
         });
+
     });
 
     function cerrarSesion() {
         eraseCookie("username");
         location.reload();
-    };
-
-
+    }
 </script>
 
 

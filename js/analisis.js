@@ -4,8 +4,19 @@ var responsableFiltro = null;
 var ascendente = false;
 var ultimoOrden = null;
 
-agruparEntidades(entidades);
-agregarEntidadesADropdown(entidades);
+function cargarAnalisisDeEmergencia(){
+	var user = getCookie("username");
+	var entidadesDeEmergencia = [];
+	if (username != null) {
+		$.each(emergencias, function(num) {
+			if (emergencias[num].usuarioCoordinador == user) {
+				entidadesDeEmergencia = emergencias[num].entidades;
+			}
+		});
+		agruparEntidades(entidadesDeEmergencia);
+		agregarEntidadesADropdown(entidadesDeEmergencia);
+	}
+}
 
 function agruparEntidades(array) {
   var entidadesAgrupadas = [];
