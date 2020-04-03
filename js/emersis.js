@@ -170,3 +170,25 @@ function loadUserData() {
     });
 
 }
+
+
+function centrarZoom(entidad)
+{
+    mymap.setView([entidad.posicion.latitud, entidad.posicion.longitud], 17);
+}
+
+function crearBotonCentrar()
+{
+    L.easyButton( '<span class="star">&starf;</span>', function(){
+        var usuario = getCookie("username");
+        if (isColaborador(usuario)) {
+            var entidad = entidadDeUsuario(usuario);
+            centrarZoom(entidad);
+        }
+
+        if (isCoordinador(getCookie("username"))) {
+            var emergencia = emergenciaDeUsuario(usuario);
+            centrarZoom(emergencia.entidades[0]);
+        }
+      }).addTo(mymap);
+}

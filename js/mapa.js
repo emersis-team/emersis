@@ -21,4 +21,6 @@ function initMap() {
         position: 'bottomright'
     }).addTo(mymap);
 
+    crearBotonCentrar();
+
 }
