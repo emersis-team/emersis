@@ -37,7 +37,9 @@
 
 </div>
 
-<!-- 	Carga la Barra -->
+<script src="./js/datos.js"></script>
+<script src="./js/emersis.js"></script>
+<script src="./js/mapa.js"></script>
 <script>
 
     async function fetchPages() {
@@ -48,21 +50,15 @@
         $("#barra").append(barraMenu);
         $("#mapa").append(mapa);
 
-        dynamicallyLoadScript("./js/datos.js");
-        dynamicallyLoadScript("./js/emersis.js");
-        dynamicallyLoadScript("./js/mapa.js");
-
     }
 
-    function dynamicallyLoadScript(url) {
+    fetchPages().then(() => {
 
-        var script = document.createElement("script");
-        script.src = url;
+        loadUserData();
+        initEmersis();
+        initMap();
 
-        document.head.appendChild(script);
-    }
-
-    fetchPages();
+    });
 
 </script>
 
