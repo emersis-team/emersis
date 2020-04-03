@@ -42,14 +42,6 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
-                <!-- ALERTAS -->
-                <li class="nav-item dropdown" style="margin-left: 15px; margin-top: 3px;">
-                    <a class="nav-link text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-bell"></i>
-                    </a>
-                </li>
-
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" id="username"> Usuario
                     <span class="caret"></span>
                 </a>
@@ -78,6 +70,7 @@
             $("#modalhere").empty();
             $("#modalhere").load("./html/alertas.html", function () {
                 $("#alertasModal").modal();
+                cargarNotificaciones();
             });
         });
 
@@ -105,12 +98,13 @@
             });
 
         });
+
     });
 
     function cerrarSesion() {
         eraseCookie("username");
         location.reload();
-    };
+    }
 
 
 </script>
