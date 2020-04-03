@@ -73,10 +73,10 @@
         });
     	
     	$("#situacion").click(function () {
-
             $("#modalhere").empty();
             $("#modalhere").load("./html/situacion.html", function () {
                 $("#situacionModal").modal();
+                cargarStuacionDeEntidad();
             });
         });
 

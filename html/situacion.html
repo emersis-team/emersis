@@ -1,37 +1,43 @@
-<!-- Modal Login -->
+﻿<!-- Modal Situacion -->
 <div class="modal fade" id="situacionModal" role="dialog">
 	<div class="modal-dialog">
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
-				<div class="">
-					<div class="col-12">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<br />
-					<div class="col-3 col-md-3 col-sm-3" style="text-align: center;">
-						<img style="height: 90px;" src="./images/icon_emersis.png" />
-					</div>
-					<div class="col-9 col-md-9 col-sm-9" style="text-align: center;">
-						<h1 class="modal-title">EMERSIS</h1>
-					</div>
+				<div class="col-12">
+					<button type="button" class="close" data-dismiss="modal">
+						&times;</button>
+				</div>
+				<br />
+				<div class="col-3 col-md-3 col-sm-3" style="text-align: center;">
+					<h2 class="modal-title">Situacion:</h2>
+				</div>
+				<div class="col-9 col-md-9 col-sm-9">
+					<h2 id="nombreEntidad" class="modal-title">Entidad</h2>
 				</div>
 			</div>
 			<div class="modal-body">
-				<form action="" id="form-login" method="post"
-					class="form padding-20">
-					<div class="form-group">
-						<div>
-							<h1>Aca ponemos la SITUACION</h1>
+				<div class="control-group" id="listaDeRecursos">
+					<label for="username" class="control-label">Recursos</label>
+
+					<div class="hidden" id="lineaRelleno">
+						<div class="controls form-inline">
+							<input type="text" class="col-9 col-md-9 col-sm-9" id="recurso">
+							<input type="text" style="margin-left: 5px"
+								class="col-2 col-md-2 col-sm-2" id="cantidad">
 						</div>
 					</div>
-					<div class="form-group">
-						<div>
-							<h3>pie</h3>
-						</div>
-					</div>
-				</form>
+				</div>
+				<br />
+				<button class="btn btn-default" type="button">Agregar</button>
+				<br /> <br />
+				<div class="control-group" id="listaDeNecesidades">
+					<label for="username" class="control-label">Necesidades</label>
+				</div>
+				<br />
+				<button class="btn btn-default" type="button">Agregar</button>
 			</div>
 		</div>
 	</div>
 </div>
+
