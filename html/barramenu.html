@@ -39,6 +39,9 @@
                 <li class="dropdown">
                     <a href="#" class="hidden" data-toggle="modal" id="analisis"> Análisis </a>
                 </li>
+                <li class="dropdown">
+                    <a href="#" class="hidden" data-toggle="modal" id="mensajes"> Mensajes </a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
@@ -94,6 +97,14 @@
             $("#modalhere").empty();
             $("#modalhere").load("./html/login.html", function () {
                 $("#login").modal();
+            });
+        });
+
+        $("#mensajes").click(function () {
+            $("#modalhere").empty();
+            $("#modalhere").load("./html/mensajes.html", function () {
+                $("#mensajesModal").modal();
+                cargarDestinatarios();
             });
         });
 
