@@ -21,6 +21,69 @@ function initMap() {
         position: 'bottomright'
     }).addTo(mymap);
 
-    crearBotonCentrar();
+        lc = L.control.locate({
+        drawCircle: true,
+        drawMarker: true,
+        showPopup: false,
+        position: 'topleft',        
+        strings: {
+            title: "Ver mi ubicación"
+        },
+        locateOptions: {
+            enableHighAccuracy: true
+        }
+    }).addTo(mymap);
 
+
+    // Saco el boton creado previamente
+    //crearBotonCentrar();
+
+    prepararUbicacion();
+
+}
+
+var latitudUsuario;
+var longitudUsuario;
+var marker;
+var customMarkerPH = L.icon({
+
+    iconUrl: 'images/ubicacion.png',
+    html: "<img  src='images/ubicacion.png' />",
+    iconSize: [28, 28],
+    className: 'location-marker'
+});
+
+
+function obtenerUbicacion() {
+    lc.start();
+}
+function prepararUbicacion() {
+
+    mymap.on('locationfound', function (e) {
+        latitudUsuario = e.latitude;
+        longitudUsuario = e.longitude;
+        
+        var b = new L.LatLng(latitudUsuario, longitudUsuario);
+        mymap.setView(new L.LatLng(latitudUsuario, longitudUsuario), 16);
+
+        if (typeof (marker) != "undefined") {
+            marker.setLatLng(b);
+        }
+        else
+        {
+            marker = L.marker([latitudUsuario, longitudUsuario], { icon: customMarkerPH }).addTo(mymap);
+        }
+        lc.stop();
+    });
+
+    mymap.on('locationerror', onLocationError);
+
+    obtenerUbicacion();
+
+}
+
+
+function onLocationError(e) {
+    var username = getCookie("username");
+    centrarEnUser(username);
 }
