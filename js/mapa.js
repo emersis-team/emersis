@@ -1,5 +1,6 @@
 var control;
 var mymap;
+var lc;
 
 function initMap() {
 
