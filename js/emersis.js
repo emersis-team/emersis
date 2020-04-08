@@ -197,7 +197,9 @@ function loadCalcoMapUser() {
 
 function mostrarCalcosDeUser(usuario){
 	var emergencia = emergenciaDeUsuario(usuario);
-    refrescarEmergencia(emergencia.id);
+    if (typeof (emergencia) != "undefined") {
+        refrescarEmergencia(emergencia.id);
+    }
 }
 
 
