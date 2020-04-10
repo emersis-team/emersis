@@ -152,12 +152,14 @@ function loadUserData() {
         }
         document.getElementById("username").text = nombreVisible;
         document.getElementById("btnSalir").classList.remove("hidden");
-        document.getElementById("alertas").classList.remove("hidden");
+        document.getElementById("mensajes").classList.remove("hidden");        
+        
     }
 
     if (isCoordinador(username)) {
         var nombreVisible = "Coordinador";
         document.getElementById("analisis").classList.remove("hidden");
+         document.getElementById("mensajes").classList.remove("hidden");
         document.getElementById("btnLogin").classList.add("hidden");
         var emergencia = emergenciaDeUsuario(username);
         if (emergencia != null) {
