@@ -1,6 +1,5 @@
 var control;
 var mymap;
-var lc;
 
 function initMap() {
 
@@ -22,22 +21,7 @@ function initMap() {
         position: 'bottomright'
     }).addTo(mymap);
 
-        lc = L.control.locate({
-        drawCircle: true,
-        drawMarker: true,
-        showPopup: false,
-        position: 'topleft',        
-        strings: {
-            title: "Ver mi ubicación"
-        },
-        locateOptions: {
-            enableHighAccuracy: true
-        }
-    }).addTo(mymap);
-
-
-    // Saco el boton creado previamente
-    //crearBotonCentrar();
+    crearBotonCentrar();
 
     prepararUbicacion();
 
@@ -46,6 +30,8 @@ function initMap() {
 var latitudUsuario;
 var longitudUsuario;
 var marker;
+var markerRadio;
+
 var customMarkerPH = L.icon({
 
     iconUrl: 'images/ubicacion.png',
@@ -56,25 +42,24 @@ var customMarkerPH = L.icon({
 
 
 function obtenerUbicacion() {
-    lc.start();
+    mymap.locate({ setView: true, maxZoom: 16 });
 }
 function prepararUbicacion() {
 
     mymap.on('locationfound', function (e) {
         latitudUsuario = e.latitude;
         longitudUsuario = e.longitude;
-        
+
         var b = new L.LatLng(latitudUsuario, longitudUsuario);
         mymap.setView(new L.LatLng(latitudUsuario, longitudUsuario), 16);
 
         if (typeof (marker) != "undefined") {
             marker.setLatLng(b);
         }
-        else
-        {
-            marker = L.marker([latitudUsuario, longitudUsuario], { icon: customMarkerPH }).addTo(mymap);
+        else {
+            marker = L.marker([latitudUsuario, longitudUsuario], { }).addTo(mymap);
+            markerRadio = crearRadioUbicacion(e.latlng, e.accuracy).addTo(mymap);
         }
-        lc.stop();
     });
 
     mymap.on('locationerror', onLocationError);

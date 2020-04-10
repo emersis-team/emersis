@@ -36,8 +36,8 @@ function agregarEntidad(entidad) {
     }).addTo(mymap);
 
     marker.bindTooltip(entidad.nombre, {
-        permanent: true, 
-        direction: 'top',offset: L.point({x: 0, y: -15})
+        permanent: true,
+        direction: 'top', offset: L.point({ x: 0, y: -15 })
     });
     marker.bindPopup("<img src='./images/contacto.png' height='24' width='24'/>" + entidad.datosContacto.responsable.nombre + "</br></br><img src='./images/number.png' height='24' width='24'/>" + entidad.datosContacto.telefono);
 }
@@ -72,6 +72,7 @@ function refrescarEmergencia(emergencia) {
 
 function limpiarMapa() {
 
+  
     // Este metodo re inicia todo el mapa, hay que ver si existe una manera mas limpia de hacerlo
     mymap.eachLayer(function (layer) {
         mymap.removeLayer(layer);
@@ -94,6 +95,11 @@ function limpiarMapa() {
             tileSize: 512,
             zoomOffset: -1
         }).addTo(mymap);
+
+    if (typeof (marker) != "undefined") {
+        marker.addTo(mymap);
+        markerRadio.addTo(mymap);
+    }
 
 }
 
@@ -135,34 +141,31 @@ function eraseCookie(name) {
 function loadUserData() {
 
     var username = getCookie("username");
-    
+
     if (isColaborador(username)) {
-    	var nombreVisible = "Colaborador";
+        var nombreVisible = "Colaborador";
         document.getElementById("situacion").classList.remove("hidden");
         document.getElementById("btnLogin").classList.add("hidden");
         var entidad = entidadDeUsuario(username);
         if (entidad != null) {
-        	nombreVisible = entidad.nombre;
-		}
+            nombreVisible = entidad.nombre;
+        }
         document.getElementById("username").text = nombreVisible;
         document.getElementById("btnSalir").classList.remove("hidden");
         document.getElementById("alertas").classList.remove("hidden");
-        document.getElementById("mensajes").classList.remove("hidden");
+    }
 
-  	}
-    
     if (isCoordinador(username)) {
-    	var nombreVisible = "Coordinador";
+        var nombreVisible = "Coordinador";
         document.getElementById("analisis").classList.remove("hidden");
-        document.getElementById("mensajes").classList.remove("hidden");
         document.getElementById("btnLogin").classList.add("hidden");
         var emergencia = emergenciaDeUsuario(username);
         if (emergencia != null) {
-        	nombreVisible = emergencia.nombre;
-		}
+            nombreVisible = emergencia.nombre;
+        }
         document.getElementById("username").text = nombreVisible;
         document.getElementById("btnSalir").classList.remove("hidden");
-	}
+    }
 
     $.each(emergencias, function (num) {
         var link = document.createElement("a");
@@ -176,35 +179,31 @@ function loadUserData() {
 }
 
 
-function centrarZoom(entidad)
-{
+function centrarZoom(entidad) {
     mymap.setView([entidad.posicion.latitud, entidad.posicion.longitud], 17);
 }
 
-function crearBotonCentrar()
-{
-    L.easyButton( '<span class="star">&starf;</span>', function(){
-        var usuario = getCookie("username");
-        centrarEnUser(usuario);
-      }).addTo(mymap);
+function crearBotonCentrar() {
+    L.easyButton('<span class="star">&#127758;</span>', function () {
+        obtenerUbicacion();
+    }).addTo(mymap);
 }
 
 function loadCalcoMapUser() {
-	var username = getCookie("username");
-	centrarEnUser(username);
-	mostrarCalcosDeUser(username);
+    var username = getCookie("username");
+    centrarEnUser(username);
+    mostrarCalcosDeUser(username);
 }
 
-function mostrarCalcosDeUser(usuario){
-	var emergencia = emergenciaDeUsuario(usuario);
+function mostrarCalcosDeUser(usuario) {
+    var emergencia = emergenciaDeUsuario(usuario);
     if (typeof (emergencia) != "undefined") {
         refrescarEmergencia(emergencia.id);
     }
+
 }
 
-
-
-function centrarEnUser(usuario){
+function centrarEnUser(usuario) {
     if (isColaborador(usuario)) {
         var entidad = entidadDeUsuario(usuario);
         centrarZoom(entidad);
@@ -215,3 +214,8 @@ function centrarEnUser(usuario){
         centrarZoom(emergencia.entidades[0]);
     }
 }
+
+function crearRadioUbicacion(latlng, radius) {
+    return L.circle(latlng, radius)
+}
+
