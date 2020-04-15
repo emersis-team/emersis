@@ -37,6 +37,7 @@ function agregarEntidad(entidad) {
 
     marker.bindTooltip(entidad.nombre, {
         permanent: true,
+        opacity: 0.5,
         direction: 'top', offset: L.point({ x: 0, y: -15 })
     });
     marker.bindPopup("<img src='./images/contacto.png' height='24' width='24'/>" + entidad.datosContacto.responsable.nombre + "</br></br><img src='./images/number.png' height='24' width='24'/>" + entidad.datosContacto.telefono);
@@ -191,7 +192,7 @@ function centrarZoom(entidad) {
 function crearBotonCentrar() {
     L.easyButton('<span class="star">&#127758;</span>', function () {
         obtenerUbicacion();
-    }).addTo(mymap);
+    },"Mi Ubicacion").addTo(mymap);
 }
 
 function loadCalcoMapUser() {
@@ -223,4 +224,3 @@ function centrarEnUser(usuario) {
 function crearRadioUbicacion(latlng, radius) {
     return L.circle(latlng, radius)
 }
-
